@@ -13,6 +13,8 @@ This is a real time employee management application
  - delete employ
  - real time updation to database
  - context api for global data sharing across the application
+ - added pagination(2 users per page)
+ - order each document by timestamp
 
 ## Deployments
 
