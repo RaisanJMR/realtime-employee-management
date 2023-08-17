@@ -94,7 +94,6 @@ html,
 }
 
 .pagination {
-  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   padding: 10px 0;
@@ -103,17 +102,19 @@ html,
 
 .pagination > span {
   padding: 5px 10px;
-  border: 1px solid #adb5bd;
+  /* border: 1px solid #adb5bd; */
   cursor: pointer;
 }
 
 .page-selected {
   background-color: #fe6c44;
   color: #ffffff;
+
 }
 
 .page-disable {
   opacity: 0;
+  pointer-events: none;
 }
 
 .section-table {

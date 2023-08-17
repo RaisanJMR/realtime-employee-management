@@ -20,3 +20,6 @@ This is a real time employee management application
 
 to view live [click here](https://realtime-employee-management.vercel.app/)
 
+## Explanation
+
+to view explanation [click here](https://youtu.be/cF5kCvxIRl0)
