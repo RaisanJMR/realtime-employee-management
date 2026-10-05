@@ -4,9 +4,12 @@ import Header from './components/Header'
 import Form from './components/Form'
 import EmployeeContext from './context/EmployeeContext'
 
+const PAGE_SIZE = 5
+
 function App() {
   const { employees, getEmployee } = useContext(EmployeeContext)
   const [page, setPage] = useState(1)
+  const totalPages = Math.ceil(employees.length / PAGE_SIZE)
 
   useEffect(() => {
     getEmployee()
@@ -19,7 +22,7 @@ function App() {
     console.log(selectedPage)
     if (
       selectedPage >= 1 &&
-      selectedPage <= Math.ceil(employees.length / 2) &&
+      selectedPage <= totalPages &&
       selectedPage !== page
     ) {
       setPage(selectedPage)
@@ -47,7 +50,7 @@ function App() {
               <p>delete</p>
             </div>
           </div>
-          {employees?.slice(page * 2 - 2, page * 2).map((user, index) => (
+          {employees?.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((user, index) => (
             <Employe
               id={user.id}
               name={user.name}
@@ -64,7 +67,7 @@ function App() {
                 onClick={() => selectPageHandle(page - 1)}>
                 ◀️
               </span>
-              {[...Array(Math.ceil(employees.length / 2))].map((_, i) => {
+              {[...Array(totalPages)].map((_, i) => {
                 return (
                   <span
                     className={page === i + 1 ? 'page-selected' : ''}
@@ -75,7 +78,7 @@ function App() {
                 )
               })}
               <span
-                className={page < employees.length / 2 ? '' : 'page-disable'}
+                className={page < totalPages ? '' : 'page-disable'}
                 onClick={() => selectPageHandle(page + 1)}>
                 ▶️
               </span>
